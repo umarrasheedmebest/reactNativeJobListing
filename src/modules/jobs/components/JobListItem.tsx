@@ -1,18 +1,27 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import SimpleText from '@components/SimpleText';
-import { colors } from '@styles/globalStyles';
+import SimpleText from '../../../common/components/SimpleText';
+import { getProgress } from '../../../utils/common';
+import { colors } from '../../../common/styles/globalStyles';
 import * as Progress from 'react-native-progress';
-import { getProgress } from '@utils/common';
+import { JobListItemProps } from '../../../types/jobListItem';
 
-/** component for showing transaction single row */
-const JobListItem = ({ item, onPress }) => {
+/** Component for showing transaction single row */
+const JobListItem: React.FC<JobListItemProps> = ({ item, onPress }) => {
     return (
         <TouchableOpacity style={styles.container} onPress={() => onPress(item)}>
             <SimpleText title={item?.title} variant="heading" />
             <View style={styles.listProgress}>
-                <Progress.Bar progress={getProgress(item?.images?.length)} width={250} color={colors.orange} />
-                <SimpleText title={`${item?.images?.length}/3`} variant="subtitle" style={{ marginLeft: 10, }} />
+                <Progress.Bar
+                    progress={parseFloat(getProgress(item?.images?.length || 0))}
+                    width={250}
+                    color={colors.orange}
+                />
+                <SimpleText
+                    title={`${item?.images?.length || 0}/3`}
+                    variant="subtitle"
+                    style={{ marginLeft: 10 }}
+                />
             </View>
         </TouchableOpacity>
     );

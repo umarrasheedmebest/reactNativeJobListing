@@ -1,16 +1,12 @@
 import * as React from 'react';
 import AddJobScreenComponents from './index';
 import AddJobScreenServiceComponent from './index.service';
+import { AddJobContainerProps } from '../../../../types/addJob';
 
-/** container for AddJobScreen screen view/business logic */
-function AddJobScreen(props) {
+function AddJobScreen(props: AddJobContainerProps) {
     return (
         <AddJobScreenServiceComponent {...props}>
-            {props => (
-                <AddJobScreenComponents
-                    {...props}
-                />
-            )}
+            {serviceProps => <AddJobScreenComponents {...serviceProps} />}
         </AddJobScreenServiceComponent>
     );
 }

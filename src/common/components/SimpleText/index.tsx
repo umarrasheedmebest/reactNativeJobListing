@@ -1,8 +1,12 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
-import { colors } from '@styles/globalStyles';
+import {
+    Text,
+    StyleSheet,
+} from 'react-native';
+import { colors } from '../../styles/globalStyles';
+import { SimpleTextProps } from '../../../types/simpleText';
 
-const SimpleText = ({
+const SimpleText: React.FC<SimpleTextProps> = ({
     title,
     onPress,
     numberOfLines,
@@ -48,7 +52,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         lineHeight: 24,
         textAlign: 'center',
-    }
+    },
 });
 
 export default SimpleText;

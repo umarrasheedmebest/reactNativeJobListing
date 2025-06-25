@@ -1,9 +1,14 @@
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
-import layout from '@utils/layout';
-import { colors } from '@styles/globalStyles';
+import {
+    Text,
+    TouchableOpacity,
+    StyleSheet,
+} from 'react-native';
+import { colors } from '../../styles/globalStyles';
+import layout from '../../../utils/layout';
+import { ButtonProps } from '../../../types/button';
 
-const Button = ({
+const Button: React.FC<ButtonProps> = ({
     title,
     onPress,
     disabled = false,
@@ -13,7 +18,7 @@ const Button = ({
     width,
     isDynamic = false,
 }) => {
-    const dynamicWidth = isDynamic ? layout.window.width * width : width;
+    const dynamicWidth = isDynamic && width ? layout.window.width * width : width;
 
     return (
         <TouchableOpacity
@@ -22,9 +27,10 @@ const Button = ({
             style={[
                 styles.button,
                 styles[variant],
-                { width: dynamicWidth },
+                dynamicWidth ? { width: dynamicWidth } : {},
                 style,
-            ]}>
+            ]}
+        >
             <Text style={[styles.text, textStyle]}>{title}</Text>
         </TouchableOpacity>
     );

@@ -1,11 +1,11 @@
 import React from 'react';
-import { SafeAreaView, View, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import globalStyles from '@styles/globalStyles';
-import JobSlot from '@modules/jobs/components/JobSlot';
-import Button from '@components/Button';
-import TextInputField from '@components/TextInputField';
+import { SafeAreaView, View, StyleSheet } from 'react-native';
+import globalStyles from '../../../../common/styles/globalStyles';
+import TextInputField from '../../../../common/components/TextInputField';
+import JobSlot from '../../components/JobSlot';
+import Button from '../../../../common/components/Button';
+import { AddJobScreenProps } from '../../../../types/addJob';
 
-/** View logic for AddJobScreen screen */
 const AddJobScreenComponent = ({
     getPhotoFromGallery,
     imageSlote1,
@@ -13,18 +13,18 @@ const AddJobScreenComponent = ({
     imageSlote3,
     handleSave,
     setTitle,
-    title
-}) => {
+    title,
+}: AddJobScreenProps) => {
     return (
         <SafeAreaView style={globalStyles.container}>
             <TextInputField
                 label="Add a title"
-                value={title}
-                onChangeText={(value) => setTitle(value)}
+                value={title ?? ''}
+                onChangeText={setTitle}
                 width={0.9}
-                isDynamic={true}
+                isDynamic
                 blurOnSubmit={false}
-                autoFocus={true}
+                autoFocus
             />
             <View style={styles.container}>
                 <JobSlot item={{ url: imageSlote1, slot: 1 }} onPress={() => getPhotoFromGallery(1)} />
@@ -34,8 +34,8 @@ const AddJobScreenComponent = ({
 
             <Button
                 title="Save Job"
-                width={0.5} // 90% of the screen width if isDynamic is true
-                isDynamic={true}
+                width={0.5}
+                isDynamic
                 onPress={handleSave}
             />
         </SafeAreaView>
@@ -49,6 +49,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         padding: 20,
-        marginTop: 10
+        marginTop: 10,
     },
 });

@@ -1,15 +1,13 @@
 import * as React from 'react';
 import JobListingComponents from './index';
 import JobListingServiceComponent from './index.service';
+import { JobListingScreenProps } from '../../../../types/jobListing';
 
-/** container for JobListing screen view/business logic */
-function JobListingScreen(props) {
+function JobListingScreen(props: JobListingScreenProps) {
     return (
         <JobListingServiceComponent {...props}>
-            {props => (
-                <JobListingComponents
-                    {...props}
-                />
+            {serviceProps => (
+                <JobListingComponents {...serviceProps} />
             )}
         </JobListingServiceComponent>
     );

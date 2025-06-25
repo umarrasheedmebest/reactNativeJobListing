@@ -1,6 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
 
-/** global colors and styles */
 export const colors = {
     white: '#FFFFFF',
     green: '#009C77',
@@ -8,10 +7,16 @@ export const colors = {
     blue: '#800080',
     error: '#FF0000',
     lightGrey: '#D3D3D3',
-    orange: '#f4511e'
+    orange: '#f4511e',
 };
 
-export default StyleSheet.create({
+type Styles = {
+    container: ViewStyle;
+    heading: TextStyle;
+    inputTitle: TextStyle;
+};
+
+export default StyleSheet.create<Styles>({
     container: {
         flex: 1,
         backgroundColor: colors.white,
@@ -24,5 +29,5 @@ export default StyleSheet.create({
     inputTitle: {
         textAlign: 'left',
         marginHorizontal: 20,
-    }
+    },
 });

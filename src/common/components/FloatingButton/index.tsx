@@ -1,18 +1,16 @@
-import SimpleText from '@components/SimpleText';
-import { colors } from '@styles/globalStyles';
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
+import SimpleText from '../SimpleText';
+import { colors } from '../../styles/globalStyles';
+import { FloatingButtonProps } from '../../../types/floatingButton';
 
-/** Floating button */
-const FloatingButton = ({ navigateToAddJobScreen }) => {
+const FloatingButton: React.FC<FloatingButtonProps> = ({ navigateToAddJobScreen }) => {
     return (
         <TouchableOpacity
             style={styles.container}
-            onPress={navigateToAddJobScreen}>
-            <SimpleText
-                title={"+"}
-                style={styles.icon}
-            />
+            onPress={navigateToAddJobScreen}
+        >
+            <SimpleText title="+" style={styles.icon} />
         </TouchableOpacity>
     );
 };
@@ -37,7 +35,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingBottom: 2,
         color: colors.white,
-    }
+    },
 });
 
 export default FloatingButton;
